@@ -1,0 +1,7 @@
+<div class="nav-profile-container" [ngStyle]="style"></div>
+<a routerLink="/{{ profileInfo.userId }}/">
+  <img
+    alt="{{ profileInfo.userId }}'s Profile Pic"
+    src="{{ profileInfo.profilePhoto }}"
+  />
+</a>

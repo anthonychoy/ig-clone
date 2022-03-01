@@ -1,0 +1,36 @@
+<div id="side-panel-story" class="story-container dark-off">
+  <div class="story-header">
+    <div class="story-header-label">
+      <div class="story-header-label-content">{{ "Stories" }}</div>
+    </div>
+    <a class="story-watch-all" href="/#">
+      <div class="story-watch-all-content" (click)="handleWatchAll()">
+        {{ watchAll ? "Watch Unseen" : "Watch All" }}
+      </div>
+    </a>
+  </div>
+  <div class="story-body-container">
+    <div class="story-body-outer">
+      <div class="story-body-inner">
+        <div *ngIf="!fetched" class="story-loader">
+          <img
+            alt="Loading..."
+            src="/assets/img/loader.gif"
+            height="32"
+            width="32"
+          />
+        </div>
+
+        <div *ngIf="fetched" class="story-body">
+          <app-story-row
+            *ngFor="let story of dispStories; let i = index"
+            class="story-row"
+            [story]="story"
+            [index]="i"
+          >
+          </app-story-row>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,34 @@
+<div id="side-panel-suggestion" class="suggestion-container dark-off">
+  <div class="suggestion-header">
+    <div class="suggestion-header-label">
+      <div class="suggestion-header-label-content">
+        {{ "Suggestions For You" }}
+      </div>
+    </div>
+    <a class="suggestion-see-all" href="/explore/people/">
+      <div class="suggestion-see-all-content">{{ "See All" }}</div>
+    </a>
+  </div>
+  <div class="suggestion-body-container">
+    <div class="suggestion-body-outer dark-off">
+      <div class="suggestion-body-inner">
+        <div *ngIf="!fetched" class="story-loader">
+          <img
+            alt="Loading..."
+            src="/assets/img/loader.gif"
+            height="32"
+            width="32"
+          />
+        </div>
+        <div *ngIf="fetched" class="suggestion-body">
+          <app-suggestion-row
+            *ngFor="let suggestion of suggestions; let i = index"
+            class="suggestion-row"
+            [suggestion]="suggestion"
+            [index]="i"
+          ></app-suggestion-row>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

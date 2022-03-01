@@ -1,0 +1,40 @@
+.igpost-time {
+  padding-left: 16px;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.igpost-time a,
+.igpost-time a:visited {
+  color: #8e8e8e;
+  color: rgba(var(--f52, 142, 142, 142), 1);
+  margin-bottom: 5px;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.igpost-time time {
+  font-size: 10px;
+  letter-spacing: 0.2px;
+}
+
+@media (min-width: 736px) {
+  .igpost-time time {
+    line-height: 18px;
+  }
+}
+
+/* comment caption css */
+.caption-comment {
+  padding-left: 16px;
+  padding-right: 16px;
+  -webkit-box-flex: 0;
+  flex: 0 0 auto;
+  -webkit-box-pack: start;
+  justify-content: flex-start;
+  -webkit-box-align: stretch;
+  align-items: stretch;
+  align-content: stretch;
+}
+
+
