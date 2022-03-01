@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { UserService } from './services/user.service';
 
 @Component({
   selector: 'app-root',
@@ -16,6 +17,8 @@ export class AppComponent {
   public clickNav: string = 'home';
   public inbox: number = 5;
 
+  constructor(private userService: UserService) {}
+
   ngOnInit(): void {
     const path = window.location.pathname;
 
@@ -26,6 +29,16 @@ export class AppComponent {
     else if (path.indexOf('/profile') > -1) activeIcon = 'profile';
 
     this.clickNav = activeIcon;
+
+    this.userService.getUserProfile(null).then((response) => {
+      if (response.results.length === 1) {
+        const user = response.results[0];
+
+        this.profileInfo.userId = user.login.uuid;
+        this.profileInfo.userName = user.login.username;
+        this.profileInfo.profilePhoto = user.picture.thumbnail;
+      }
+    });
   }
 
   public handleResize(e) {

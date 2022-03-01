@@ -15,7 +15,7 @@
       </div>
       <section>
         <div class="profile-setting dark-off">
-          <h2>{{ userProfile.userId }}</h2>
+          <h2>{{ userProfile.bio.intro }}</h2>
           <a *ngIf="loginUser === userProfile.userId" href="/accounts/edit/">
             <button type="button" (click)="handleEditProfile()">
               Edit Profile
@@ -47,13 +47,13 @@
             </span>
           </li>
           <li>
-            <a href="/sarojsh01/followers/">
+            <a href="#">
               <span>{{ userProfile.followedBy.length }} </span>
               followers
             </a>
           </li>
           <li>
-            <a href="/sarojsh01/followers/">
+            <a href="#">
               <span>{{ userProfile.follows.length }} </span>
               following
             </a>
@@ -72,12 +72,12 @@
     </header>
     <div class="highlight"></div>
     <div class="menu">
-      <a class="current" href="/{{ userProfile.userId }}/">
+      <a class="current" href="/{{ userProfile.username }}/">
         posts
       </a>
-      <a href="/{{ userProfile.userId }}/channel">igtv</a>
-      <a href="/{{ userProfile.userId }}/saved">saved</a>
-      <a href="/{{ userProfile.userId }}/tagged">tagged</a>
+      <a href="/{{ userProfile.username }}/channel">igtv</a>
+      <a href="/{{ userProfile.username }}/saved">saved</a>
+      <a href="/{{ userProfile.username }}/tagged">tagged</a>
     </div>
     <div class="content">
       <article>
@@ -94,7 +94,7 @@
                   alt="post"
                   height="100%"
                   width="100%"
-                  src="{{ imgUrl + this.userProfile.posts[0]['photo'][0] }}"
+                  src="https://picsum.photos/293/293"
                 />
               </div>
 
@@ -103,7 +103,7 @@
                   alt="post"
                   height="100%"
                   width="100%"
-                  src="{{ imgUrl }}sarojsh01_photo2.jpg"
+                  src="https://picsum.photos/293/293"
                 />
               </div>
               <div class="photo" height="293" width="293">
@@ -111,7 +111,7 @@
                   alt="post"
                   height="100%"
                   width="100%"
-                  src="{{ imgUrl }}sarojsh01_photo3.jpg"
+                  src="https://picsum.photos/293/293"
                 />
               </div>
             </div>
@@ -121,7 +121,7 @@
                   alt="post"
                   height="100%"
                   width="100%"
-                  src="{{ imgUrl }}rebatov_photo1.jpg"
+                  src="https://picsum.photos/293/293"
                 />
               </div>
               <div class="photo" height="293" width="293">
@@ -129,7 +129,7 @@
                   alt="post"
                   height="100%"
                   width="100%"
-                  src="{{ imgUrl }}rebatov_photo2.jpg"
+                  src="https://picsum.photos/293/293"
                 />
               </div>
               <div class="photo" height="293" width="293">
@@ -137,7 +137,7 @@
                   alt="post"
                   height="100%"
                   width="100%"
-                  src="{{ imgUrl }}bidhan.sthapit_photo1.jpg"
+                  src="https://picsum.photos/293/293"
                 />
               </div>
             </div>

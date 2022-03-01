@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Post } from '../modules/Post';
 import { Observable } from 'rxjs';
+import * as posts from 'data/post.json';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -18,8 +19,8 @@ export class PostService {
   constructor(private http: HttpClient) { }
 
   // Get Posts
-  getPosts(): Observable<Post[]> {
-    return this.http.get<Post[]>(`${this.apiUrl}post/all`);
+  getPosts(): any {
+    return posts['default'];
   }
 
   // Delete Post

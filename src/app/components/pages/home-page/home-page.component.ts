@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-home-page',
@@ -9,15 +10,27 @@ export class HomePageComponent implements OnInit {
   public windowWidth: number = window.innerWidth;
 
   public profileInfo = {
-    userId: 'sarojsh01',
-    userName: 'Saroj Shakya',
-    profilePhoto: 'assets/img/userdata/sarojsh01_profilephoto.jpg',
+    userId: '',
+    userName: '',
+    profilePhoto: '',
   };
 
   public clickNav: string = 'home';
   public inbox: number = 5;
 
-  ngOnInit(): void {}
+  constructor(private userService: UserService) {}
+
+  ngOnInit(): void {
+    this.userService.getUserProfile(null).then((response) => {
+      if (response.results.length === 1) {
+        const user = response.results[0];
+
+        this.profileInfo.userId = user.login.uuid;
+        this.profileInfo.userName = user.login.username;
+        this.profileInfo.profilePhoto = user.picture.thumbnail;
+      }
+    });
+  }
 
   public handleResize(e) {
     this.windowWidth = e.target.innerWidth;

@@ -3,6 +3,22 @@ class Bio {
   website: string;
 }
 
+class Name {
+  title: string;
+  first: string;
+  last: string;
+}
+
+class Location {
+  street: Object;
+  city: string;
+  state: string;
+  country: string;
+  postcode: string;
+  coordinates: Object;
+  timezone: Object;
+}
+
 export class User {
   userId: string;
   userName: string;
@@ -13,12 +29,39 @@ export class User {
   posts: Array<Object>;
 }
 
-export class UserResponse {
-  userid: string;
+export class LoginData {
+  uuid: string;
   username: string;
-  profilephoto: string;
-  followedby: Array<Object>;
+  password: string;
+  salt: string;
+  md5: string;
+  sha1: string;
+  sha256: string;
+}
+
+export class ImageData {
+  large: string;
+  medium: string;
+  thumbnail: string;
+}
+
+export class UserResponseResult {
+  results: Array<UserResponse>;
+}
+
+export class UserResponse {
+  gender: string;
+  name: Name;
+  email: string;
+  login: LoginData;
+  dob: Object;
+  registered: Object;
+  phone: string;
+  cell: string;
+  id: Object;
+  picture: ImageData;
+  followedBy: Array<Object>;
   follows: Array<Object>;
-  bio: Bio;
   posts: Array<Object>;
+  nat: string;
 }

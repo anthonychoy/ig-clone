@@ -17,14 +17,12 @@ export class PostListComponent implements OnInit {
   constructor(private postService: PostService) {}
 
   ngOnInit(): void {
-    this.postService.getPosts().subscribe((posts) => {
-      this.fetched = true;
-      this.posts = posts;
-      this.posts.shift();
-      for (let i = 0; i < this.posts.length; i++) {
-        this.modifiedPosts[i] = this.posts[i];
-        this.modifiedPosts[i]['postId'] = i + 1;
-      }
-    });
+    this.posts = this.postService.getPosts();
+    this.fetched = true;
+    this.posts.shift();
+    for (let i = 0; i < this.posts.length; i++) {
+      this.modifiedPosts[i] = this.posts[i];
+      this.modifiedPosts[i]['postId'] = i + 1;
+    }
   }
 }

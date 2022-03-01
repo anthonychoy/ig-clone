@@ -4,6 +4,7 @@
     [inbox]="inbox"
     [clickNav]="clickNav"
     (handleNavClickEvent)="handleClickNav($event)"
+    *ngIf="profileInfo"
   ></app-nav>
   <app-footer *ngIf="windowWidth <= 1056"></app-footer>
   <router-outlet></router-outlet>

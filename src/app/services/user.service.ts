@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { UserResponse } from '../modules/User';
+import { UserResponseResult } from '../modules/User';
 import { Observable } from 'rxjs';
 
 const httpOptions = {
@@ -13,12 +13,27 @@ const httpOptions = {
   providedIn: 'root',
 })
 export class UserService {
-  private apiUrl: string = 'http://localhost:3001/api/user/';
+  private apiUrl: string = 'https://randomuser.me/api';
+  public userInfo = null;
 
   constructor(private http: HttpClient) { }
 
+  // Get user profile API
+  getUserProfileApi(userId: string): Promise<UserResponseResult> {
+    return this.http.get<any>(`${this.apiUrl}`).toPromise();
+  }
+
   // Get user profile
-  getUserProfile(userId: string): Observable<UserResponse[]> {
-    return this.http.get<UserResponse[]>(`${this.apiUrl}${userId}`);
+  async getUserProfile(userId: string): Promise<any> {
+    return new Promise(resolve => {
+      if (!this.userInfo) {
+        this.getUserProfileApi(userId).then(response => {
+          this.userInfo = response;
+          resolve(response);
+        });
+      } else {
+        resolve(this.userInfo);
+      }
+    });
   }
 }
